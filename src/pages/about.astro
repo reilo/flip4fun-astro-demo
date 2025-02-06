@@ -1,0 +1,66 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const pageTitle = "About Me";
+
+const identity = {
+  firstName: "Sarah",
+  country: "Canada",
+  occupation: "Technical Writer",
+  hobbies: ["photography", "birdwatching", "baseball"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
+const happy = true;
+const finished = false;
+const goal = 3;
+
+const titleColor = "purple";
+const skillColor = "navy";
+
+const operatingSystem = "Linux";
+const quantity = 3;
+const footwear = "boots";
+const student = false;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+        <style define:vars={{titleColor,skillColor}}>
+            h1 {
+              color: var(--titleColor);
+              font-size: 1.5rem;
+            }
+            .skill {
+                color: var(--skillColor);
+                font-weight: bold;
+            }            
+        </style>
+    </head>
+	<body>
+        <Header />
+        <h1>About Astro</h1>
+        <h2>... and myself</h2>
+        <p>All Details here...</p>
+        {happy && <p>I am happy to be learning Astro!</p>}
+        {finished && <p>I finished this tutorial!</p>}
+        {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}	
+
+        <p>My skills are:</p>
+        <ul>
+          {skills.map((skill) => <li class="skill">{skill}</li>)}
+        </ul>
+        <Footer />    
+		<script>
+            import "../scripts/menu.js";
+       </script>
+   </body>
+</html>
